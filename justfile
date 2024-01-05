@@ -14,4 +14,4 @@ flamegraph problem:
 dhat problem:
     cargo run --profile dhat --features dhat-heap --package {{problem}}
 create problem:
-    cargo generate --path ./problem-template --name {{problem}}
+    cargo generate --path ./template --name {{problem}}
