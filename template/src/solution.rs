@@ -1,4 +1,5 @@
 use crate::custom_error::LCError;
+use rstest::*;
 
 #[tracing::instrument]
 pub fn process(_input: &str) -> miette::Result<String, LCError> {
@@ -9,7 +10,7 @@ pub fn process(_input: &str) -> miette::Result<String, LCError> {
 mod tests {
     use super::*;
 
-    #[test]
+    #[rstest]
     fn test_process() -> miette::Result<()> {
         todo!("haven't built test yet");
         let input = "";

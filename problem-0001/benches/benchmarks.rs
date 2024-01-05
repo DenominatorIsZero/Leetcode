@@ -7,8 +7,7 @@ fn main() {
 
 #[divan::bench]
 fn solution() {
-    solution::process(divan::black_box(include_str!(
-        "../input.txt",
-    )))
-    .unwrap();
+    let input = [2, 7, 11, 15].to_vec();
+    let target = 9;
+    solution::process(divan::black_box(input), divan::black_box(target)).unwrap();
 }

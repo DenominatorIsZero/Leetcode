@@ -1,9 +1,5 @@
 work problem:
     cargo watch -x "check -p {{problem}}" -s "just test -p {{problem}}" -s "just lint {{problem}}" -s "just bench {{problem}}"
-www-watch:
-   RUST_LOG=info cargo +nightly leptos watch --project www
-www-build:
-   cargo +nightly leptos build --project www --release
 lint problem:
     clippy-tracing --path "{{problem}}" --action check --exclude target --exclude benches
     cargo clippy -p {{problem}}
