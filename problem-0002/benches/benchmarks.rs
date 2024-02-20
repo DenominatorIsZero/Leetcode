@@ -1,4 +1,4 @@
-use problem_0002::*;
+use problem_0002::{solution::ListNode, *};
 
 fn main() {
     // Run registered benchmarks.
@@ -7,8 +7,7 @@ fn main() {
 
 #[divan::bench]
 fn solution() {
-    solution::process(divan::black_box(include_str!(
-        "../input.txt",
-    )))
-    .unwrap();
+    let l1 = ListNode::from_vec(vec![2, 4, 3]);
+    let l2 = ListNode::from_vec(vec![5, 6, 4]);
+    solution::process(divan::black_box(l1), divan::black_box(l2)).unwrap();
 }

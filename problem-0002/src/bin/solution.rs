@@ -1,5 +1,5 @@
-use problem_0002::solution::process;
 use miette::Context;
+use problem_0002::solution::process;
 
 #[cfg(feature = "dhat-heap")]
 #[global_allocator]
@@ -13,8 +13,10 @@ fn main() -> miette::Result<()> {
     #[cfg(not(feature = "dhat-heap"))]
     tracing_subscriber::fmt::init();
 
-    let file = include_str!("../../input.txt");
-    let result = process(file).context("process input")?;
-    println!("{}", result);
+    let l1 = None;
+    let l2 = None;
+
+    let result = process(l1, l2).context("process input")?.unwrap();
+    println!("{:?}", result);
     Ok(())
 }
