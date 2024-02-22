@@ -1,5 +1,3 @@
-use itertools::PeekingNext;
-
 use crate::custom_error::LCError;
 
 // Definition for singly-linked list.
