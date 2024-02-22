@@ -1,3 +1,5 @@
+use itertools::PeekingNext;
+
 use crate::custom_error::LCError;
 
 // Definition for singly-linked list.
@@ -57,13 +59,39 @@ pub fn process(
     l1: Option<Box<ListNode>>,
     l2: Option<Box<ListNode>>,
 ) -> miette::Result<Option<Box<ListNode>>, LCError> {
-    let i1 = l1.unwrap().to_i64();
-    let i2 = l2.unwrap().to_i64();
-    let sum = i1 + i2;
-    println!("i1 = '{i1:?}'");
-    println!("i2 = '{i2:?}'");
-    println!("i1 + i2 = '{sum:?}'");
-    Ok(ListNode::from_i64(i1 + i2))
+    let mut n1 = l1.unwrap();
+    let mut n2 = l2.unwrap();
+
+    let mut v3 = n1.val + n2.val;
+    let mut carry_over = v3 / 10;
+
+    let mut head = Some(Box::new(ListNode::new(v3 % 10)));
+    let mut n3 = head.as_mut().unwrap();
+
+    while n1.next.is_some() || n2.next.is_some() {
+        let v1 = if let Some(next) = n1.next.as_ref() {
+            next.val
+        } else {
+            0
+        };
+        let v2 = if let Some(next) = n2.next.as_ref() {
+            next.val
+        } else {
+            0
+        };
+        v3 = v1 + v2 + carry_over;
+        carry_over = v3 / 10;
+
+        n3.next = Some(Box::new(ListNode::new(v3 % 10)));
+        n3 = n3.next.as_mut().unwrap();
+
+        n1 = if let Some(next) = n1.next { next } else { n1 };
+        n2 = if let Some(next) = n2.next { next } else { n2 };
+    }
+    if carry_over > 0 {
+        n3.next = Some(Box::new(ListNode::new(carry_over)));
+    }
+    Ok(head)
 }
 
 #[cfg(test)]
