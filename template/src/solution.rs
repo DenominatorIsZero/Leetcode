@@ -1,5 +1,4 @@
 use crate::custom_error::LCError;
-use rstest::*;
 
 #[tracing::instrument]
 pub fn process(_input: &str) -> miette::Result<String, LCError> {
@@ -9,6 +8,7 @@ pub fn process(_input: &str) -> miette::Result<String, LCError> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use rstest::*;
 
     #[rstest]
     fn test_process() -> miette::Result<()> {

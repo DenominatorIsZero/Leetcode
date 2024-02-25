@@ -1,5 +1,4 @@
 use crate::custom_error::LCError;
-use rstest::*;
 
 #[tracing::instrument]
 pub fn process(input: i32) -> miette::Result<bool, LCError> {
@@ -19,16 +18,14 @@ pub fn process(input: i32) -> miette::Result<bool, LCError> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use rstest::*;
 
     #[rstest]
     #[case(121, true)]
     #[case(-121, false)]
     #[case(10, false)]
     #[tracing::instrument]
-    fn test_process(
-        #[case] input: i32,
-        #[case] expected: bool,
-    ) -> miette::Result<()> {
+    fn test_process(#[case] input: i32, #[case] expected: bool) -> miette::Result<()> {
         assert_eq!(expected, process(input)?);
         Ok(())
     }
