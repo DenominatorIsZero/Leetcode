@@ -560,6 +560,7 @@ dependencies = [
  "itertools",
  "miette",
  "nom",
+ "rand",
  "rstest",
  "rstest_reuse",
  "thiserror",
