@@ -552,6 +552,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "problem-0003"
+version = "0.1.0"
+dependencies = [
+ "dhat",
+ "divan",
+ "itertools",
+ "miette",
+ "nom",
+ "rstest",
+ "rstest_reuse",
+ "thiserror",
+ "tracing",
+ "tracing-subscriber",
+]
+
+[[package]]
 name = "problem-0009"
 version = "0.1.0"
 dependencies = [
